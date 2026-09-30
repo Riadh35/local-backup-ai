@@ -8,6 +8,22 @@ Ce dépôt distribue uniquement le **programme d'installation compilé** — le 
 
 Allez dans l'onglet **[Releases](../../releases/latest)** et téléchargez `LocalBackupAI-Setup.msi`.
 
+## Aperçu
+
+<p align="center">
+  <img src="screenshots/1-vue-ensemble.png" width="90%" alt="Vue d'ensemble" />
+</p>
+
+<p align="center">
+  <img src="screenshots/2-sauvegarder.png" width="45%" alt="Sauvegarder" />
+  <img src="screenshots/3-disques.png" width="45%" alt="Disques et volumes" />
+</p>
+
+<p align="center">
+  <img src="screenshots/4-clonage.png" width="45%" alt="Clonage" />
+  <img src="screenshots/5-media-secours.png" width="45%" alt="Média de secours" />
+</p>
+
 ## Fonctionnalités
 
 - **Sauvegarde de fichiers** : archives `.lbk` (manifeste versionné, blocs compressés Zstandard, empreintes SHA-256).
