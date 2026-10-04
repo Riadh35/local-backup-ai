@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-04",
+  "release": "v0.1.0",
+  "installer": {
+    "OS": "Microsoft Windows 11 Professionnel",
+    "Version": "10.0.22000",
+    "InstallerSha256": "518DDB827F02A87C1117C3F280D7F2D2EC5589EF98BC3065ADB730C1D5F5CE7C",
+    "InstallExitCode": 0,
+    "InstalledExecutableExists": true,
+    "RecoveryStatusExitCode": 0,
+    "DotnetInstalled": false,
+    "Signature": "NotSigned"
+  },
+  "host_tests": {
+    "failed": 0,
+    "note": "Source tests on development host; not a full installed-product test count",
+    "additional_long_path_passed": 9,
+    "solution_passed": 207
+  },
+  "vm_file_tests": {
+    "files": [
+      {
+        "File": "données.txt",
+        "Length": 53,
+        "SourceSha256": "0D1EB029CE2ECE727063C05298FFE43F22747A451AC4B45BC210419E6EA17A92",
+        "RestoredSha256": "0D1EB029CE2ECE727063C05298FFE43F22747A451AC4B45BC210419E6EA17A92",
+        "Equal": true
+      },
+      {
+        "File": "empty.bin",
+        "Length": 0,
+        "SourceSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "RestoredSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Equal": true
+      },
+      {
+        "File": "nested\\random.bin",
+        "Length": 10485797,
+        "SourceSha256": "DB4AC851706DF08576E9DA2DB1B85B2F5FCE4DE4DCFEC52CE6B418A124F135C7",
+        "RestoredSha256": "DB4AC851706DF08576E9DA2DB1B85B2F5FCE4DE4DCFEC52CE6B418A124F135C7",
+        "Equal": true
+      }
+    ],
+    "checks": [
+      {
+        "Test": "backup",
+        "ExitCode": 0,
+        "ExpectedExit": 0,
+        "Passed": true
+      },
+      {
+        "Test": "verify",
+        "ExitCode": 0,
+        "ExpectedExit": 0,
+        "Passed": true
+      },
+      {
+        "Test": "manifest",
+        "ExitCode": 0,
+        "ExpectedExit": 0,
+        "Passed": true
+      },
+      {
+        "Test": "restore",
+        "ExitCode": 0,
+        "ExpectedExit": 0,
+        "Passed": true
+      },
+      {
+        "Test": "reject-existing-destination",
+        "ExitCode": 1,
+        "ExpectedExit": 1,
+        "Passed": true
+      },
+      {
+        "Test": "reject-corruption",
+        "ExitCode": 1,
+        "ExpectedExit": 1,
+        "Passed": true
+      },
+      {
+        "Test": "reject-corrupt-restore",
+        "ExitCode": 1,
+        "ExpectedExit": 1,
+        "Passed": true
+      },
+      {
+        "Test": "disk-inventory",
+        "ExitCode": 0,
+        "ExpectedExit": 0,
+        "Passed": true
+      }
+    ],
+    "passed": true,
+    "existing_files_unchanged": true,
+    "empty_folder_restored": true
+  },
+  "vm_wpf": {
+    "installed_assemblies_hash_checked": 17,
+    "backup_restore_hash_equal": true,
+    "source_sha256": "f7c0f314455e4dbd49395ff0ed23bfd06912993827a3fa8a196e59155596887d",
+    "selective_restore": true,
+    "restored_sha256": "f7c0f314455e4dbd49395ff0ed23bfd06912993827a3fa8a196e59155596887d",
+    "exit_code": 0,
+    "simulated_integrations": [
+      "VSS provider",
+      "physical disk and partition cloning",
+      "Ollama"
+    ],
+    "execution": "Compiled WPF harness over a hash-checked copy of installed assemblies, non-interactive WinRM session"
+  },
+  "not_tested": [
+    "Windows 10 in this audit",
+    "actual physical disk or partition writes",
+    "actual VSS snapshot",
+    "real Ollama model",
+    "WinPE ISO build or boot in this audit",
+    "power-loss or hardware-failure recovery",
+    "exhaustive DPI and accessibility"
+  ],
+  "vm_interactive_startup": {
+    "running": true,
+    "responding": true,
+    "window_title": "Local Backup AI",
+    "has_window": true,
+    "method": "Interactive user desktop via temporary test task"
+  }
+}

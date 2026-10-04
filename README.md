@@ -1,55 +1,75 @@
 # Local Backup AI
 
-Sauvegarde et restauration de fichiers **100 % locale**, sans cloud et sans compte. Application Windows native (WPF), en français.
+**Back up and restore your files on Windows. No cloud. No account.**
 
-Ce dépôt distribue uniquement le **programme d'installation compilé** — le code source n'est pas publié.
+[Download for Windows x64](https://github.com/Riadh35/local-backup-ai/releases/latest/download/LocalBackupAI-Setup.msi) · [Français](README.fr.md) · [Test results](VALIDATION.md) · [Report a problem](https://github.com/Riadh35/local-backup-ai/issues)
 
-## Télécharger
+Native Windows application with a **French interface**. English documentation is available; an English application interface is not included in v0.1.0. The optional AI assistant is not required for backup or restore.
 
-Allez dans l'onglet **[Releases](../../releases/latest)** et téléchargez `LocalBackupAI-Setup.msi`.
+This repository distributes the compiled installer and documentation. **The application source code is not published.**
 
-## Aperçu
+<p align="center"><img src="screenshots/1-vue-ensemble.png" width="90%" alt="Local Backup AI dashboard in French" /></p>
+
+## Try a small backup and restore
+
+1. Open the [latest release](https://github.com/Riadh35/local-backup-ai/releases/latest) and download **LocalBackupAI-Setup.msi** from Assets. The automatically generated source ZIP is not the application.
+2. Install on Windows 10/11, 64-bit. The current MSI is **not digitally signed**; Windows may show an unknown-publisher or reputation warning. Follow your organization's security policy.
+3. In **Sauvegarder** (Back up), add a small folder of sample files, choose a destination outside that folder, then select **Créer la sauvegarde**.
+4. In **Restaurer** (Restore), open the resulting `.lbk` folder and select **Vérifier l’intégrité**.
+5. Restore into a new folder and compare with your samples before relying on the application for important files.
+
+Keep backups on a separate physical device. Preserve the **whole `.lbk` directory**, not only its manifest. See [archive storage and recovery](ARCHIVE_FORMAT.md).
+
+## Features and boundaries
+
+| Feature | Scope |
+|---|---|
+| File backup | Local `.lbk` directories, versioned manifest, Zstandard blocks, SHA-256 checks |
+| Restore | All files or one selected file into a new directory, without overwriting existing files |
+| Integrity verification | Re-read archive data and compare hashes on demand |
+| Disk inventory | Read-only Windows disk and volume information |
+| VHD/VHDX copying | Copy a standalone, offline, unmounted container to a new file and verify its hash |
+| VSS | Experimental snapshots for open files; elevation required; a snapshot failure stops that backup |
+| Physical disk / partition cloning | Experimental; destroys the selected destination's contents, secondary offline disks only, explicit confirmation required |
+| WinPE recovery media | Build a bootable ISO using Windows ADK + WinPE add-on; does not directly write a USB drive |
+| Local assistant | Optional Ollama-based help; cannot execute backup, restore or clone operations |
+
+This is not an active Windows system-image backup or migration tool. Scheduling and encryption are not available. File backup does not promise preservation of NTFS permissions, alternate data streams or links. Integrity hashes are not encryption or proof of authenticity.
+
+The [validation report](VALIDATION.md) distinguishes actual operations from simulated integrations. Evaluate experimental features on disposable data.
+
+## Screenshots
 
 <p align="center">
-  <img src="screenshots/1-vue-ensemble.png" width="90%" alt="Vue d'ensemble" />
+  <img src="screenshots/2-sauvegarder.png" width="45%" alt="File backup screen" />
+  <img src="screenshots/3-disques.png" width="45%" alt="Read-only disk inventory" />
 </p>
-
 <p align="center">
-  <img src="screenshots/2-sauvegarder.png" width="45%" alt="Sauvegarder" />
-  <img src="screenshots/3-disques.png" width="45%" alt="Disques et volumes" />
+  <img src="screenshots/4-clonage.png" width="45%" alt="Cloning options" />
+  <img src="screenshots/5-media-secours.png" width="45%" alt="WinPE ISO builder" />
 </p>
 
-<p align="center">
-  <img src="screenshots/4-clonage.png" width="45%" alt="Clonage" />
-  <img src="screenshots/5-media-secours.png" width="45%" alt="Média de secours" />
-</p>
+## Requirements and privacy
 
-## Fonctionnalités
+- Windows 10/11 x64. See the validation report for environments actually tested.
+- Administrator approval for installation and features requiring elevated Windows access, including VSS and physical cloning.
+- Windows ADK + WinPE add-on only for building recovery media.
+- [Ollama](https://ollama.com) and a downloaded model only for the optional assistant.
 
-- **Sauvegarde de fichiers** : archives `.lbk` (manifeste versionné, blocs compressés Zstandard, empreintes SHA-256).
-- **Restauration** : restauration complète ou fichier par fichier, jamais d'écrasement des fichiers existants.
-- **Vérification d'intégrité** : recalcul et comparaison des empreintes SHA-256 à la demande.
-- **Disques et volumes** : inventaire Windows en lecture seule (aucune modification des partitions).
-- **Clonage** : disque complet, partition, ou disque virtuel VHD/VHDX (mode expérimental, disques secondaires hors ligne).
-- **Média de secours WinPE** : construit une clé USB/DVD de démarrage pour ouvrir et vérifier une archive `.lbk` même si Windows ne démarre plus (nécessite le Windows ADK).
-- **Assistant local** : répond aux questions sur l'usage de l'application via un modèle Ollama installé en local (optionnel, 100 % local, n'agit jamais sur vos données).
-- **Historique** : suivi des opérations de sauvegarde, restauration et clonage.
+Backup, verification, restore and cloning run locally. The optional assistant communicates with local Ollama. Installing optional tools and downloading a model require Internet access; external links open those services separately.
 
-## Prérequis
+## Installer integrity
 
-- Windows 10/11 (64 bits).
-- Droits administrateur recommandés pour VSS, l'inventaire disque et le clonage.
-- Windows ADK + add-on WinPE (optionnel, uniquement pour construire un média de secours).
-- [Ollama](https://ollama.com) (optionnel, uniquement pour l'assistant local).
+For **v0.1.0**, `LocalBackupAI-Setup.msi` is 66,519,559 bytes. SHA-256:
 
-## Confidentialité
+```text
+518ddb827f02a87c1117c3f280d7f2d2ec5589ef98bc3065adb730c1d5f5ce7c
+```
 
-Aucune donnée n'est envoyée sur un serveur distant. Toutes les opérations (sauvegarde, restauration, clonage, assistant local) s'exécutent entièrement sur votre machine.
+Check with `Get-FileHash .\LocalBackupAI-Setup.msi -Algorithm SHA256`. A matching hash confirms the file matches this release; it does not replace code signing or a security audit.
 
-## Soutenir le projet
+## Feedback and support
 
-[paypal.me/ryad36](https://paypal.me/ryad36)
+[Open an issue](https://github.com/Riadh35/local-backup-ai/issues) with your Windows version, application version, steps to reproduce and error message. Remove personal paths and sensitive data from logs and screenshots. English and French reports are welcome.
 
----
-
-Créé par Riadh BEN KHALED.
+Created by **Riadh BEN KHALED**. [Support development](https://paypal.me/ryad36).
