@@ -29,7 +29,7 @@ Native Windows 10/11 application, **French and English interface** (chosen durin
 2. Install on Windows 10/11, 64-bit, and choose the application language. The installer is **not yet code-signed**: Windows SmartScreen may show "Windows protected your PC" — click **More info**, then **Run anyway**.
 3. Back up a small test folder to an external disk or a NAS, then click **Test restore**.
 
-After 14 days without a license, only new backups are blocked. **Restoring, verifying and testing your existing backups always remains possible.**
+After 14 days without a license, Local Backup Pro becomes a free version: each backup may contain up to **2 GB of data**; a license removes this limit. **Restoring, verifying and testing your backups always remains possible, without any limit.**
 
 ## Buy a lifetime license
 
@@ -63,10 +63,10 @@ Keep backups on a separate device, and keep the **whole `.lbk` folder**. See [ar
 
 ## Installer integrity
 
-For **v1.1.0**, `LocalBackupPro-Setup.msi` is 133,672,960 bytes. SHA-256:
+For **v1.1.1**, `LocalBackupPro-Setup.msi` is 133,586,944 bytes. SHA-256:
 
 ```text
-c951fd8e1e8dcf98ea3b57b22f69f40222609d71f05cd743d2a2827d4fb600e7
+aca6ef17b0a30220ce4af72b672ea682d14abc9034dc12d3105134bd72ea47b1
 ```
 
 Check with `Get-FileHash .\LocalBackupPro-Setup.msi -Algorithm SHA256`. A matching hash confirms the file matches this release; it does not replace code signing.
