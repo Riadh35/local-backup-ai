@@ -2,7 +2,7 @@
 
 *English version below.*
 
-Dernière mise à jour : 6 octobre 2026. Éditeur : Riadh BEN KHALED.
+Dernière mise à jour : 24 octobre 2026. Éditeur : Riadh BEN KHALED.
 
 ## Résumé
 
@@ -15,13 +15,18 @@ Pour fonctionner, l'application enregistre localement, dans `%LOCALAPPDATA%\Loca
 - le catalogue des sauvegardes et l'historique des opérations (chemins, tailles, dates, résultats) ;
 - les profils de sauvegarde planifiée et leurs résultats ;
 - un journal technique local des opérations ;
-- votre préférence de langue.
+- votre préférence de langue ;
+- l'état de la licence (clé activée ou date de début de l'essai).
 
 Les archives `.lbk` sont écrites uniquement dans les dossiers de destination que vous choisissez. Ces informations ne sont transmises à personne, ni à l'éditeur ni à un tiers. Vous pouvez les supprimer à tout moment en effaçant ce dossier et vos archives.
 
-## Achat et Microsoft Store
+## Achat, licence et boutiques
 
-L'application est vendue exclusivement par le Microsoft Store. Les informations d'achat, de paiement et de téléchargement sont traitées par Microsoft selon sa déclaration de confidentialité : <https://privacy.microsoft.com>. L'éditeur ne reçoit pas vos données de paiement.
+- **Édition Microsoft Store** : les informations d'achat, de paiement et de téléchargement sont traitées par Microsoft selon sa déclaration de confidentialité : <https://privacy.microsoft.com>.
+- **Local Backup Pro (édition complète)** : l'achat se fait sur Whop, qui traite le paiement selon sa propre politique de confidentialité. L'éditeur reçoit de Whop le nom et l'adresse e-mail de l'acheteur, uniquement pour générer la clé de licence, l'envoyer par e-mail et assurer le support. Ces informations ne sont ni revendues ni utilisées à d'autres fins.
+- La clé de licence contient le nom, l'adresse e-mail, l'offre et la date d'achat. Elle est vérifiée **sur votre ordinateur, sans connexion Internet** ; la date de début de l'essai gratuit est enregistrée localement.
+
+L'éditeur ne reçoit jamais vos données de paiement.
 
 ## Fonctions administrateur
 
@@ -33,7 +38,7 @@ L'application ne collecte aucune donnée, y compris concernant des enfants.
 
 ## Contact
 
-Pour toute question sur cette politique : <https://github.com/Riadh35/local-backup-ai/issues>.
+Pour toute question sur cette politique : contact@guardianwall.fr ou <https://github.com/Riadh35/local-backup-ai/issues>.
 
 ## Modifications
 
@@ -43,7 +48,7 @@ Toute modification de cette politique sera publiée à cette adresse avec une no
 
 # Privacy policy — Local Backup
 
-Last updated: October 6, 2026. Publisher: Riadh BEN KHALED.
+Last updated: October 24, 2026. Publisher: Riadh BEN KHALED.
 
 ## Summary
 
@@ -56,13 +61,18 @@ To work, the application stores the following locally in `%LOCALAPPDATA%\LocalBa
 - the backup catalog and operation history (paths, sizes, dates, results);
 - scheduled backup profiles and their results;
 - a local technical log of operations;
-- your language preference.
+- your language preference;
+- the license state (activated key or trial start date).
 
 `.lbk` archives are written only to the destination folders you choose. This information is not shared with anyone, neither the publisher nor any third party. You can delete it at any time by removing that folder and your archives.
 
-## Purchase and Microsoft Store
+## Purchase, license and stores
 
-The application is sold exclusively through the Microsoft Store. Purchase, payment and download information is processed by Microsoft under its privacy statement: <https://privacy.microsoft.com>. The publisher does not receive your payment details.
+- **Microsoft Store edition**: purchase, payment and download information is processed by Microsoft under its privacy statement: <https://privacy.microsoft.com>.
+- **Local Backup Pro (full edition)**: purchases are made on Whop, which processes payment under its own privacy policy. The publisher receives the buyer's name and e-mail address from Whop, only to generate the license key, send it by e-mail and provide support. This information is neither sold nor used for any other purpose.
+- The license key contains the name, e-mail address, offer and purchase date. It is checked **on your computer, without an Internet connection**; the start date of the free trial is stored locally.
+
+The publisher never receives your payment details.
 
 ## Administrator features
 
@@ -74,7 +84,7 @@ The application collects no data, including about children.
 
 ## Contact
 
-For any question about this policy: <https://github.com/Riadh35/local-backup-ai/issues>.
+For any question about this policy: contact@guardianwall.fr or <https://github.com/Riadh35/local-backup-ai/issues>.
 
 ## Changes
 

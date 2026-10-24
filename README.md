@@ -1,75 +1,79 @@
-# Local Backup AI
+# Local Backup Pro
 
-**Back up and restore your files on Windows. No cloud. No account.**
+**Encrypted, verified Windows backup that stays on your PC. No cloud. No account. No subscription.**
 
-[Download for Windows x64](https://github.com/Riadh35/local-backup-ai/releases/latest/download/LocalBackupAI-Setup.msi) · [Français](README.fr.md) · [Test results](VALIDATION.md) · [Report a problem](https://github.com/Riadh35/local-backup-ai/issues)
+[Download the 14-day free trial (Windows x64)](https://github.com/Riadh35/local-backup-ai/releases/latest/download/LocalBackupPro-Setup.msi) · [Buy a license on Whop](https://whop.com/apps-361b) · [Français](README.fr.md) · [Report a problem](https://github.com/Riadh35/local-backup-ai/issues)
 
-Native Windows application with a **French interface**. English documentation is available; an English application interface is not included in v0.1.0. The optional AI assistant is not required for backup or restore.
+Native Windows 10/11 application, **French and English interface** (chosen during installation, switchable at any time). This repository distributes the compiled installer and documentation; the application source code is not published.
 
-This repository distributes the compiled installer and documentation. **The application source code is not published.**
+<p align="center"><img src="screenshots/1-dashboard-en.png" width="90%" alt="Local Backup Pro dashboard with the anti-ransomware shield" /></p>
 
-<p align="center"><img src="screenshots/1-vue-ensemble.png" width="90%" alt="Local Backup AI dashboard in French" /></p>
+## What it does
 
-## Try a small backup and restore
-
-1. Open the [latest release](https://github.com/Riadh35/local-backup-ai/releases/latest) and download **LocalBackupAI-Setup.msi** from Assets. The automatically generated source ZIP is not the application.
-2. Install on Windows 10/11, 64-bit. The current MSI is **not digitally signed**; Windows may show an unknown-publisher or reputation warning. Follow your organization's security policy.
-3. In **Sauvegarder** (Back up), add a small folder of sample files, choose a destination outside that folder, then select **Créer la sauvegarde**.
-4. In **Restaurer** (Restore), open the resulting `.lbk` folder and select **Vérifier l’intégrité**.
-5. Restore into a new folder and compare with your samples before relying on the application for important files.
-
-Keep backups on a separate physical device. Preserve the **whole `.lbk` directory**, not only its manifest. See [archive storage and recovery](ARCHIVE_FORMAT.md).
-
-## Features and boundaries
-
-| Feature | Scope |
+| Feature | What you get |
 |---|---|
-| File backup | Local `.lbk` directories, versioned manifest, Zstandard blocks, SHA-256 checks |
-| Restore | All files or one selected file into a new directory, without overwriting existing files |
-| Integrity verification | Re-read archive data and compare hashes on demand |
-| Disk inventory | Read-only Windows disk and volume information |
-| VHD/VHDX copying | Copy a standalone, offline, unmounted container to a new file and verify its hash |
-| VSS | Experimental snapshots for open files; elevation required; a snapshot failure stops that backup |
-| Physical disk / partition cloning | Experimental; destroys the selected destination's contents, secondary offline disks only, explicit confirmation required |
-| WinPE recovery media | Build a bootable ISO using Windows ADK + WinPE add-on; does not directly write a USB drive |
-| Local assistant | Optional Ollama-based help; cannot execute backup, restore or clone operations |
+| **Encrypted backups** | AES-256-GCM with your passphrase; file names are hidden too. Without the passphrase nobody can read the backup, not even the publisher. |
+| **Verified backups** | Every file is read back and checked with SHA-256 before a backup is reported as successful. |
+| **One-click restore test** | Restores the archive into a temporary folder, compares every hash, then cleans up. |
+| **Restore** | All files or a single file into a new folder; existing files are never overwritten. |
+| **Incremental backups and scheduling** | Only new or changed files are copied; profiles run while you are signed in to Windows; automatic retention keeps the archives you need. |
+| **Anti-ransomware protection** | Warns when the backup sits on the same disk as your files, reminds you to unplug or swap the external disk, and shows a 5-point protection shield. |
+| **Recovery media (WinPE)** | Build a bootable ISO (Windows ADK + WinPE add-on) to restore files when Windows no longer starts, and to **clone your Windows disk (C:)** to a new disk with full SHA-256 verification. |
+| **Disk and VHD/VHDX cloning** | Copy secondary offline disks, partitions and standalone VHD/VHDX files; the source is opened read-only and the copy is fully re-read. |
 
-This is not an active Windows system-image backup or migration tool. Scheduling and encryption are not available. File backup does not promise preservation of NTFS permissions, alternate data streams or links. Integrity hashes are not encryption or proof of authenticity.
+**Boundaries:** cloning copies partitions as they are (no resizing); a BitLocker-encrypted disk must be decrypted before cloning; scheduled profiles need a signed-in Windows session; this is not a full system-image restore tool.
 
-The [validation report](VALIDATION.md) distinguishes actual operations from simulated integrations. Evaluate experimental features on disposable data.
+## Try it — 14 days, every feature
+
+1. Download **LocalBackupPro-Setup.msi** from the [latest release](https://github.com/Riadh35/local-backup-ai/releases/latest). The automatically generated source ZIP is not the application.
+2. Install on Windows 10/11, 64-bit, and choose the application language. The installer is **not yet code-signed**: Windows SmartScreen may show "Windows protected your PC" — click **More info**, then **Run anyway**.
+3. Back up a small test folder to an external disk or a NAS, then click **Test restore**.
+
+After 14 days without a license, only new backups are blocked. **Restoring, verifying and testing your existing backups always remains possible.**
+
+## Buy a lifetime license
+
+| Offer | Price | PCs |
+|---|---|---|
+| Single license | €59, lifetime | 1 PC |
+| Small office | €149, lifetime | up to 5 PCs |
+
+Available on **[Whop](https://whop.com/apps-361b)**. You receive your license key by e-mail within 24 hours; paste it in **Settings → License** or import the `.lic` file. Activation works offline. All 1.x updates are included.
+
+A signed **Store edition** (backup, verification, restore, profiles) is also available on the [Microsoft Store](https://apps.microsoft.com/detail/9phlz9v5p39m).
 
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/2-sauvegarder.png" width="45%" alt="File backup screen" />
-  <img src="screenshots/3-disques.png" width="45%" alt="Read-only disk inventory" />
+  <img src="screenshots/5-clone-en.png" width="45%" alt="Cloning, with the Windows disk clone tip" />
+  <img src="screenshots/6-rescue-media-en.png" width="45%" alt="Recovery media builder" />
 </p>
 <p align="center">
-  <img src="screenshots/4-clonage.png" width="45%" alt="Cloning options" />
-  <img src="screenshots/5-media-secours.png" width="45%" alt="WinPE ISO builder" />
+  <img src="screenshots/4-settings-en.png" width="45%" alt="Settings: language and backup encryption" />
+  <img src="screenshots/7-help-en.png" width="45%" alt="Built-in help" />
 </p>
 
 ## Requirements and privacy
 
-- Windows 10/11 x64. See the validation report for environments actually tested.
-- Administrator approval for installation and features requiring elevated Windows access, including VSS and physical cloning.
-- Windows ADK + WinPE add-on only for building recovery media.
-- [Ollama](https://ollama.com) and a downloaded model only for the optional assistant.
+- Windows 10/11 x64. Administrator approval for installation and for VSS and disk cloning.
+- Windows ADK + WinPE add-on only to build the recovery media.
+- Everything runs locally: no Internet connection, no telemetry, no advertising. See the [privacy policy](PRIVACY.md).
 
-Backup, verification, restore and cloning run locally. The optional assistant communicates with local Ollama. Installing optional tools and downloading a model require Internet access; external links open those services separately.
+Keep backups on a separate device, and keep the **whole `.lbk` folder**. See [archive storage and recovery](ARCHIVE_FORMAT.md).
 
 ## Installer integrity
 
-For **v0.1.0**, `LocalBackupAI-Setup.msi` is 66,519,559 bytes. SHA-256:
+For **v1.1.0**, `LocalBackupPro-Setup.msi` is 133,672,960 bytes. SHA-256:
 
 ```text
-518ddb827f02a87c1117c3f280d7f2d2ec5589ef98bc3065adb730c1d5f5ce7c
+c951fd8e1e8dcf98ea3b57b22f69f40222609d71f05cd743d2a2827d4fb600e7
 ```
 
-Check with `Get-FileHash .\LocalBackupAI-Setup.msi -Algorithm SHA256`. A matching hash confirms the file matches this release; it does not replace code signing or a security audit.
+Check with `Get-FileHash .\LocalBackupPro-Setup.msi -Algorithm SHA256`. A matching hash confirms the file matches this release; it does not replace code signing.
 
-## Feedback and support
+## Support
 
-[Open an issue](https://github.com/Riadh35/local-backup-ai/issues) with your Windows version, application version, steps to reproduce and error message. Remove personal paths and sensitive data from logs and screenshots. English and French reports are welcome.
+- Purchase and licenses: **contact@guardianwall.fr**
+- Technical support: **support@guardianwall.fr**, or [open an issue](https://github.com/Riadh35/local-backup-ai/issues) with your Windows version, application version and the message shown. Never share your passphrase.
 
-Created by **Riadh BEN KHALED**. [Support development](https://paypal.me/ryad36).
+Created by **Riadh BEN KHALED**.
